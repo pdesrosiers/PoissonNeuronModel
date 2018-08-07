@@ -55,23 +55,18 @@ function [dataStruct] = simulatePoissonProcess(rate, ...
         nbProcesses = 1;
     end
     
-%%  Generate a random number of events per procces
-%   The number of events per process is a Poisson random variable of
-%   parameter lambda = rate*maxTime.
-    nbEvents = poissrnd( rate*maxTime, [nbProcesses,1] );
-
 %%  Randomly select the occurence times
 %   The time between consecutive events is an exponential random variable
 %   of mean mu = 1/rate
-    [occurrenceTimes,occurrenceIntervals] = ...
-                                getPoissonOccurenceTimes( rate, nbEvents );
+    [occurrenceTimes,occurrenceIntervals,nbEvents] = ...
+                                getPoissonOccurenceTimes( rate, nbProcesses, maxTime );
     
 %% Generate time series
     [timeSeries, timeValues, timeEdges] = getPoissonTimeSeries( maxTime,...
                                                 timeStep, occurrenceTimes);
 %% Save results in a struct
     dataStruct = struct;
-    dataStruct.nbEvents =nbEvents;
+    dataStruct.nbEvents = nbEvents;
     dataStruct.timeSeries = timeSeries;
     dataStruct.timeValues = timeValues;
     dataStruct.timeEdges = timeEdges;
