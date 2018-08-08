@@ -31,6 +31,7 @@ function [ calcium ] = singleNeuronCalciumActivity(time, spikingTimes, ...
  %  Build a time matrix of size N x T
     t  = repmat(time, N,1);
     t = t - repmat(spikingTimes', 1, T);
+    t(t < 0) = -1; % Prevents -Inf in the next step for long durations
     
  %  Build a calcium matrix of size N x T
     calcium =  (1-exp(-alpha.*t)).*exp(-beta.*t).*heaviside(t);
