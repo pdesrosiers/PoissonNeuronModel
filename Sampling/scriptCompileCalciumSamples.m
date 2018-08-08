@@ -7,14 +7,15 @@ parameters.totalTime = 10;
 [occurrenceTimes, ~, ~] =...
                                 getPoissonOccurenceTimes( 1, 1000, 10 );
 
-%% Collecting samples from 1 to 100 Hz
-samplingData = cell(100,1);
+%% Collecting samples from 1 to 100 Hz, plus reference samples at 1000 Hz
+samplingData = cell(101,1);
 for i = 1:100
 samplingData{i} = sampleCalcium(i, occurrenceTimes, parameters);
 end
+samplingData{101} = sampleCalcium(1000, occurrenceTimes, parameters);
 
 %% Displaying samples
-for i = 1:10
+for i = [1 5 20 100]
 plot(samplingData{i}.time,samplingData{i}.samples(1,:))
 hold on
 end
