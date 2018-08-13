@@ -24,11 +24,11 @@ end
 plot(1:100,nbPeaksRatio(1:100),'r')
 hold on
 plot(1:100,meanAmpRatio(1:100),'b')
-title('Percentage of peaks found')
+title('Fidelity of peaks parameters at different sampling rates')
 xlabel('Sampling frequency (Hz)')
 ylabel('Percentage')
-legend('Peaks ratio','Amplitudes ratio')
-ylim([0 1])
+legend('Peaks found','Mean amplitude of peaks')
+ylim([0 1.2])
 
 %% Clearing variables
 clear ampRatios peaksRatios trueAmps truePeaks i j numberOfSeries
