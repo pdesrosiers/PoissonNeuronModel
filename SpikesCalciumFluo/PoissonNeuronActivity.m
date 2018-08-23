@@ -64,4 +64,3 @@ function [ data ] = PoissonNeuronActivity( nbNeurons, firingRate, ...
    data.fluo = fromCalciumToFluo(data.time, data.calcium, parameters );
    
 end
-
