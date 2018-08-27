@@ -13,6 +13,7 @@ for i = 1:numel(samplingData) % For each sampling rate
         [peaks, data.indices{j}] = findpeaks(samplingData{i}.samples(j,:));
         data.meanAmplitude(j) = mean(peaks);
         data.nbPeaks(j) = length(peaks);
+        data.times{j} = getTimesFromIndices(data.indices{j}, samplingData{i}.time);
     end
     peaksData{i} = data;
     fprintf('%d\n',i);

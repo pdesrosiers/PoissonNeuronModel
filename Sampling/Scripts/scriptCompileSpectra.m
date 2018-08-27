@@ -12,3 +12,6 @@ end
 spectrumData{101}.spectra = powerSpectrum(samplingData{101}.samples, 1000);
 spectrumData{101}.mean = mean(spectrumData{101}.spectra);
 spectrumData{101}.freq = (0:size(spectrumData{101}.spectra,2)-1)/parameters.totalTime;
+
+%% Cleaning workspace
+clear i
